@@ -56,7 +56,7 @@ export function AuthForm({ onSuccess }: { onSuccess: () => void }) {
           <p className="text-xs text-primary-foreground/70">Démo : examinateur@demo.cm / demo1234</p>
         </div>
 
-        {/* Form panel */}
+       
         <div className="p-8 md:p-10">
           <div className="mb-6 flex items-center gap-2 md:hidden">
             <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
