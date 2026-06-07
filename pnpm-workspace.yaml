@@ -1,3 +1,7 @@
+ignoredBuiltDependencies:
+  - msw
+  - sharp
+
 onlyBuiltDependencies:
   - msw
   - sharp
