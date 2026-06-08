@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { GraduationCap, Loader2 } from "lucide-react"
 import { toast } from "sonner"
+import { InstallAppButton } from "@/components/install-app-button"
 
 export function AuthForm({ onSuccess }: { onSuccess: () => void }) {
   const [mode, setMode] = useState<"login" | "register">("login")
@@ -108,6 +109,7 @@ export function AuthForm({ onSuccess }: { onSuccess: () => void }) {
               {loading && <Loader2 className="size-4 animate-spin" />}
               {mode === "login" ? "Se connecter" : "Créer le compte"}
             </Button>
+            <InstallAppButton variant="inline" />
           </form>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
