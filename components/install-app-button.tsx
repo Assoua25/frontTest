@@ -20,7 +20,7 @@ function isMobile() {
   return /Android|iPhone|iPad|iPod/i.test(window.navigator.userAgent)
 }
 
-export function InstallAppButton() {
+export function InstallAppButton({ variant = "floating" }: { variant?: "floating" | "inline" }) {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [visible, setVisible] = useState(false)
 
@@ -69,7 +69,7 @@ export function InstallAppButton() {
   if (!visible) return null
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 rounded-2xl border bg-card p-4 shadow-xl sm:hidden">
+    <div className={variant === "floating" ? "fixed inset-x-4 bottom-4 z-50 rounded-2xl border bg-card p-4 shadow-xl sm:hidden" : "rounded-2xl border bg-card p-4 sm:hidden"}>
       <div className="flex flex-col gap-3">
         <div>
           <p className="font-semibold">Installer NoteGest</p>
