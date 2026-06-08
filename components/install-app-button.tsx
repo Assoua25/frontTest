@@ -20,9 +20,14 @@ function isMobile() {
   return /Android|iPhone|iPad|iPod/i.test(window.navigator.userAgent)
 }
 
+function isIos() {
+  return /iPhone|iPad|iPod/i.test(window.navigator.userAgent)
+}
+
 export function InstallAppButton({ variant = "floating" }: { variant?: "floating" | "inline" }) {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [visible, setVisible] = useState(false)
+  const [ios, setIos] = useState(false)
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return
@@ -32,6 +37,9 @@ export function InstallAppButton({ variant = "floating" }: { variant?: "floating
 
   useEffect(() => {
     if (isStandalone() || !isMobile()) return
+
+    setVisible(true)
+    setIos(isIos())
 
     function handleBeforeInstallPrompt(event: Event) {
       event.preventDefault()
@@ -73,12 +81,18 @@ export function InstallAppButton({ variant = "floating" }: { variant?: "floating
       <div className="flex flex-col gap-3">
         <div>
           <p className="font-semibold">Installer NoteGest</p>
-          <p className="text-sm text-muted-foreground">Ajoutez l'application à votre écran d'accueil.</p>
+          <p className="text-sm text-muted-foreground">
+            {ios
+              ? "Sur iPhone, appuyez sur Partager puis Ajouter à l'écran d'accueil."
+              : "Ajoutez l'application à votre écran d'accueil."}
+          </p>
         </div>
-        <Button onClick={handleInstall} className="h-11 gap-2">
-          <Download className="size-4" />
-          Installer l'application
-        </Button>
+        {!ios && (
+          <Button onClick={handleInstall} className="h-11 gap-2" disabled={!installPrompt}>
+            <Download className="size-4" />
+            Installer l'application
+          </Button>
+        )}
       </div>
     </div>
   )
