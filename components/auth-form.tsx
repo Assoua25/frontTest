@@ -64,7 +64,7 @@ export function AuthForm({ onSuccess }: { onSuccess: () => void }) {
             </div>
             <span className="text-lg font-semibold">NoteGest</span>
           </div>
-          <h1 className="text-2xl font-bold">{mode === "login" ? "Connexion" : "Créer un compte"}</h1>
+          <h1 className="text-2xl font-bold">{mode === "login" ? "Connexionnnnn" : "Créer un compte"}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {mode === "login" ? "Connectez-vous pour continuer." : "Renseignez vos informations."}
           </p>
